@@ -18,6 +18,7 @@ public class ContactListJava {
     public static void main(String[] args) {
         
         Scanner scan = new Scanner(System.in);
+        ContactList contactList = new ContactList();
         boolean programIsOn = true;
         
         while (programIsOn) {
@@ -34,6 +35,18 @@ public class ContactListJava {
                 System.out.println("Enter email");
                 userInput = scan.nextLine();
                 contact.setEmail(userInput);
+                contactList.setContacts(contact);
+//                System.out.println(contactList.getContacts().get(0).getFirstName());
+            } else if (userInput.equals("list")) {
+                int order = 0;
+                for (Contact contacts : contactList.getContacts()) {
+                    System.out.println(order + ":<" + contacts.getFirstName() + " " + contacts.getLasttName() + ">(" + contacts.getEmail() + ")");
+                    order ++;
+                }
+            } else if (userInput.equals("quit")) {
+                programIsOn = false;
+            } else {
+                System.out.println("Enter new, list, or quit");
             }
         }
     }
